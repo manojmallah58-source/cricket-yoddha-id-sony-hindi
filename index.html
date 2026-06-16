@@ -20,50 +20,26 @@
     #main-stage { width: 100%; transition: 0.8s ease; }
     .video-box { width: 100%; aspect-ratio: 16/9; background: #000; position: relative; }
     iframe { width: 100%; height: 100%; border: none; }
-    .locked { filter: blur(40px) brightness(0.2); pointer-events: none; }
+    .locked { filter: blur(10px) brightness(0.4); pointer-events: none; }
 
     .ticker { background: #0c0c0c; padding: 12px 0; border-bottom: 1px solid rgba(255,215,0,0.1); overflow: hidden; display: flex; align-items: center; }
     .ticker-text { white-space: nowrap; display: inline-block; animation: scroll 25s linear infinite; color: var(--gold); font-size: 13px; font-weight: 700; text-transform: uppercase; }
     @keyframes scroll { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
 
-    .overlay { 
-      position: fixed; inset: 0; background: rgba(0,0,0,0.92); 
-      z-index: 9999; display: none; align-items: center; justify-content: center; 
-      padding: 20px; backdrop-filter: blur(15px);
-    }
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
     .overlay.active { display: flex; animation: fadeIn 0.4s ease; }
 
-    .modal { 
-      width: 100%; max-width: 360px; 
-      background: linear-gradient(145deg, #111, #050505); 
-      border: 2px solid var(--gold); border-radius: 25px; 
-      padding: 30px 20px; text-align: center; 
-      box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
-    }
-    
-    .icon-wrapper {
-      width: 70px; height: 70px; 
-      background: rgba(255, 215, 0, 0.1); 
-      border-radius: 50%; 
-      display: flex; align-items: center; justify-content: center; 
-      margin: 0 auto 20px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-    }
-    .modal-icon { font-size: 35px; color: var(--gold); }
+    .modal { width: 100%; max-width: 380px; background: #111; border: 1px solid #333; border-radius: 20px; padding: 30px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 20px rgba(255, 215, 0, 0.15); }
+    .icon-wrapper { width: 80px; height: 80px; background: rgba(255, 215, 0, 0.05); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 2px dashed var(--gold); }
+    .modal-icon { font-size: 40px; color: var(--gold); }
 
-    .modal h2 { font-family: 'Rajdhani'; font-size: 22px; color: #fff; margin: 0 0 12px; letter-spacing: 1px; text-transform: uppercase; }
-    .modal p { color: #ccc; font-size: 14px; margin: 0 0 25px; line-height: 1.5; font-weight: 400; }
+    .modal h2 { font-family: 'Rajdhani'; font-size: 26px; color: #fff; margin: 0 0 10px; text-transform: uppercase; }
+    .modal p { color: #aaa; font-size: 14px; margin: 0 0 20px; line-height: 1.6; }
+    .expiry-note { color: var(--gold); font-size: 12px; font-weight: bold; margin-bottom: 20px !important; }
 
-    .btn-join { 
-      display: block; width: 100%; padding: 16px; 
-      background: var(--gold); color: #000; 
-      text-decoration: none; font-weight: 900; border-radius: 12px; 
-      text-transform: uppercase; font-size: 15px; letter-spacing: 0.5px;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.03); } 100% { transform: scale(1); } }
+    .btn-join { display: block; width: 100%; padding: 18px; background: var(--gold); color: #000; border: none; text-decoration: none; font-weight: 900; border-radius: 10px; text-transform: uppercase; font-size: 16px; cursor: pointer; transition: transform 0.2s; }
+    .btn-join:hover { transform: scale(1.02); }
+
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     .actions { padding: 20px 15px; }
@@ -80,12 +56,12 @@
   <div class="overlay" id="forcePop">
     <div class="modal">
       <div class="icon-wrapper">
-        <i class="material-icons modal-icon">gpp_maybe</i>
+        <i class="material-icons modal-icon">lock_outline</i>
       </div>
-      <h2>AUTHORIZATION REQUIRED</h2>
-      <p>To access <b>Daily Live Cricket Streams</b>, IPL updates, and HD match links, you must join our official Telegram channel. <br><br>Joining is Compulsory to unlock and watch the live match.</p>
-      <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" onclick="verifyAccess()" class="btn-join">JOIN TELEGRAM & UNLOCK</a>
-      <div style="color: #444; font-size: 10px; margin-top: 20px; letter-spacing: 2px;">SECURE VIP GATEWAY v12.0</div>
+      <h2>STREAM LOCKED</h2>
+      <p>Follow our official WhatsApp Channel to unlock HD streaming access.</p>
+      <p class="expiry-note">Once followed, you will get 24 hours of uninterrupted access.</p>
+      <a href="https://whatsapp.com/channel/0029Va4Uu60C6ZvjNJIOzU06" target="_blank" onclick="verifyAccess()" class="btn-join">FOLLOW WHATSAPP</a>
     </div>
   </div>
 
@@ -100,13 +76,13 @@
     </div>
     <div class="ticker">
       <div class="ticker-text">
-        🏏 WANT TO WATCH IPL & ALL CRICKET MATCHES LIVE? 🔗 JOIN OUR TELEGRAM CHANNEL FOR PREMIUM HD LINKS! 🔥 GET INSTANT ACCESS TO EVERY MATCH LINK IN ULTRA HD QUALITY ⚡ JOIN NOW TO NEVER MISS A BALL! 🏏
+        🏏 LIVE MATCH HD STREAMING 🔗 FOLLOW OUR WHATSAPP CHANNEL FOR FAST LINKS! 🔥 GET INSTANT ACCESS TO EVERY MATCH LINK IN ULTRA HD QUALITY ⚡ FOLLOW NOW! 🏏
       </div>
     </div>
   </div>
 
   <div class="actions">
-    <a href="https://t.me/+rwZKMV0-L8wyOTll" target="_blank" class="tg-btn"><i class="material-icons">send</i> JOIN TELEGRAM</a>
+    <a href="https://whatsapp.com/channel/0029Va4Uu60C6ZvjNJIOzU06" target="_blank" class="tg-btn"><i class="material-icons">chat</i> FOLLOW WHATSAPP</a>
     <div class="grid">
       <a href="javascript:location.reload()" class="small-btn"><i class="material-icons" style="font-size:18px;color:gold">refresh</i> REFRESH</a>
       <a href="javascript:shareLink()" class="small-btn"><i class="material-icons" style="font-size:18px;color:gold">share</i> SHARE</a>
@@ -121,48 +97,31 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
   <script>
-    // --- 1. JSON SETTINGS (Yahan badlav karein) ---
     const JSON_URL = "https://raw.githubusercontent.com/manojmallah58-source/Cricket-yoddha-json/main/links.json";
-    const CURRENT_CHANNEL_ID = "yoddha_sony_hindi"; // Agli website ke liye ise badlein (e.g. "superfans")
-
-    // --- 2. FIREBASE & LOCK CONFIG ---
+    const CURRENT_CHANNEL_ID = "yoddha_sony_hindi"; 
     const DB_NAME = "cricket_yoddha_sony_hindi"; 
-    const CONFIG = {
-      key: "yoddha_daily_access_v12",
-      timeKey: "yoddha_join_time_v12",
-      preview: 15000, 
-      expiry: 86400000 
-    };
+    const CONFIG = { key: "yoddha_access_v12", timeKey: "yoddha_time_v12", preview: 3000, expiry: 86400000 };
 
-    // --- 3. DYNAMIC STREAM LOADER (JSON Logic) ---
     async function loadStream() {
       try {
         const response = await fetch(JSON_URL);
         const data = await response.json();
         const streamUrl = data.channels[CURRENT_CHANNEL_ID];
-        
-        if (streamUrl) {
-          document.getElementById('main-player').src = streamUrl;
-          console.log("Stream Loaded: " + CURRENT_CHANNEL_ID);
-        }
-      } catch (error) {
-        console.error("JSON fetch error:", error);
-      }
+        if (streamUrl) document.getElementById('main-player').src = streamUrl;
+      } catch (e) { console.error("Error loading stream"); }
     }
 
-    // --- 4. CORE LOGIC (Pop-up & Initialize) ---
     window.onload = () => {
-      loadStream(); // Pehle link load karein
-
+      loadStream();
+      
       const lastJoin = localStorage.getItem(CONFIG.timeKey);
       const now = new Date().getTime();
 
-      if (lastJoin && (now - lastJoin > CONFIG.expiry)) {
-        localStorage.removeItem(CONFIG.key);
-        localStorage.removeItem(CONFIG.timeKey);
-      }
-
-      if (localStorage.getItem(CONFIG.key) !== 'true') {
+      // Check if 24 hours have passed
+      if (lastJoin && (now - lastJoin < CONFIG.expiry)) {
+        // Access is still valid, do nothing
+      } else {
+        // Access expired or first time
         setTimeout(() => {
           document.getElementById('main-stage').classList.add('locked');
           document.getElementById('forcePop').classList.add('active');
@@ -179,25 +138,16 @@
 
     function shareLink() {
       if (navigator.share) navigator.share({title:'Cricket Yoddha', url:window.location.href});
-      else alert("Link Copied!");
+      else alert("Link copied!");
     }
 
-    // --- 5. FIREBASE STATS ---
-    const firebaseConfig = {
-      apiKey: "AIzaSyA-vR50CMDYJVHApJir-6fmgRqhFiqQDU8",
-      authDomain: "my-website-cricket.firebaseapp.com",
-      databaseURL: "https://my-website-cricket-default-rtdb.firebaseio.com",
-      projectId: "my-website-cricket",
-    };
-
+    const firebaseConfig = { apiKey: "AIzaSyA-vR50CMDYJVHApJir-6fmgRqhFiqQDU8", authDomain: "my-website-cricket.firebaseapp.com", databaseURL: "https://my-website-cricket-default-rtdb.firebaseio.com", projectId: "my-website-cricket" };
     if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
     const today = new Date().toISOString().slice(0, 10);
     const ref = db.ref('live_users/' + DB_NAME + '/' + today);
     ref.transaction(v => (v || 0) + 1);
-    ref.on('value', snap => {
-      document.getElementById('live-count').innerText = (snap.val() || 0).toLocaleString();
-    });
+    ref.on('value', snap => { document.getElementById('live-count').innerText = (snap.val() || 0).toLocaleString(); });
   </script>
 </body>
 </html>
